@@ -15,8 +15,11 @@ class CreateServiceItemsTable extends Migration
     {
         Schema::create('service_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name', '10');
-            $table->tinyInteger('status');
+            $table->bigInteger('service_id')->index();
+            $table->string('name', '20');
+            $table->string('thumbnail');
+            $table->tinyInteger('status')->index();
+            $table->tinyInteger('sort')->default(0)->index();
             $table->timestamps();
         });
     }
