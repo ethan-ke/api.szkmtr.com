@@ -17,64 +17,34 @@ class ServiceSeeder extends Seeder
         Service::insert(
             [
                 [
-                    'name' => '公司注册',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
+                    'name'      => '商标',
+                    'sign'      => 'trademark',
+                    'status'    => 1,
+                    'thumbnail' => 'static/images/service-icon.svg',
                 ],
                 [
-                    'name' => '代理记账',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
+                    'name'      => '版权登记',
+                    'sign'      => 'copyright-registration',
+                    'status'    => 1,
+                    'thumbnail' => 'static/images/service-icon.svg',
                 ],
                 [
-                    'name' => '工商变更',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
+                    'name'      => '专利申请',
+                    'sign'      => 'patent-application',
+                    'status'    => 1,
+                    'thumbnail' => 'static/images/service-icon.svg',
                 ],
                 [
-                    'name' => '香港公司',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
+                    'name'      => '公司注册',
+                    'sign'      => 'patent-application',
+                    'status'    => 1,
+                    'thumbnail' => 'static/images/service-icon.svg',
                 ],
                 [
-                    'name' => '银行开户',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '地址挂靠',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '注册商标',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '专利注册',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '出口退税',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '最新资讯',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '优惠',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
-                ],
-                [
-                    'name' => '会员中心',
-                    'status' => 1,
-                    'thumbnail' => 'static/images/agent_bookkeeping.svg',
+                    'name'      => '法务咨询',
+                    'sign'      => 'legal-advice',
+                    'status'    => 1,
+                    'thumbnail' => 'static/images/service-icon.svg',
                 ],
             ]
         );

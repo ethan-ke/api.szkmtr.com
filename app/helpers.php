@@ -5,18 +5,19 @@ use Illuminate\Http\JsonResponse;
 /**
  * @param $data
  * @param string|null $message
+ * @param int $status_code
  * @return JsonResponse
  */
-function custom_response($data, string $message = null): JsonResponse
+function custom_response($data = null, string $message = null, $status_code = 200): JsonResponse
 {
     $item = [];
     if (!empty($message)) {
-        $message = trans('message.' . $message);
+        $message = __('messages.' . $message);
         $item['message'] = $message;
     }
     if (!empty($data)) {
         $item['data'] = $data;
     }
 
-    return response()->json($item);
+    return response()->json($item)->setStatusCode($status_code);
 }

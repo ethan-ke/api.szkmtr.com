@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'frontend-api',
         'passwords' => 'users',
     ],
 
@@ -36,15 +36,15 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+        'frontend-api' => [
+            'driver' => 'jwt',
+            'provider' => 'frontend',
+            'hash' => false,
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+        'backend-api' => [
+            'driver' => 'jwt',
+            'provider' => 'backend',
         ],
     ],
 
@@ -66,15 +66,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'frontend' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\FrontendUser::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'backend' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\BackendUser::class,
+        ],
     ],
 
     /*

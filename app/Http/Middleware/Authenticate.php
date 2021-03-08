@@ -3,19 +3,27 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
+use JetBrains\PhpStorm\NoReturn;
 
 class Authenticate extends Middleware
 {
     /**
-     * Get the path the user should be redirected to when they are not authenticated.
+     * Determine if the user is logged in to any of the given guards.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
+     * @param Request $request
+     * @param array $guards
+     * @return void
+     *
+     * @throws \Illuminate\Auth\AuthenticationException
      */
-    protected function redirectTo($request)
+    #[NoReturn] protected function authenticate($request, array $guards)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        $guard = current($guards);
+        $request->attributes->add(['guard' => $guard]);
+        if ($this->auth->guard($guard)->check()) {
+            return $this->auth->shouldUse($guard);
         }
+        $this->unauthenticated($request, $guards);
     }
 }

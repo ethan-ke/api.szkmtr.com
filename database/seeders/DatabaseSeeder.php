@@ -15,7 +15,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ServiceSeeder::class,
-            ServiceItemSeeder::class,
+            CarouselSeeder::class,
+            BackendUserSeeder::class,
+            SystemDomainSeeder::class,
+            ServiceDistrictItemSkuSeeder::class,
+            FrontendUserContactSeeder::class,
+            ServiceDistrictSeeder::class,
+            ServiceDistrictItemSeeder::class,
         ]);
     }
 }

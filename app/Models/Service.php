@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Storage;
 
 /**
  * App\Models\Service
@@ -22,6 +24,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $sign
+ * @property string $thumbnail
+ * @property int $sort
+ * @property-read \App\Models\ServiceDetail|null $detail
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceDistrictItem[] $item
+ * @property-read int|null $item_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereSign($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereThumbnail($value)
+ * @property string $banner
+ * @property-read string $banner_full
+ * @property-read string $thumbnail_full
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceSku[] $sku
+ * @property-read int|null $sku_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereBanner($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceDistrict[] $district
+ * @property-read int|null $district_count
  */
 class Service extends BaseModel
 {
@@ -32,8 +51,16 @@ class Service extends BaseModel
     /**
      * @return HasMany
      */
-    public function item(): HasMany
+    public function district(): HasMany
     {
-        return $this->hasMany(ServiceItem::class);
+        return $this->hasMany(ServiceDistrict::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbnailFullAttribute(): string
+    {
+        return env('APP_URL') . Storage::url($this->thumbnail);
     }
 }

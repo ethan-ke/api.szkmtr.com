@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServiceItemsTable extends Migration
+class CreateCarouselsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateServiceItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_items', function (Blueprint $table) {
+        Schema::create('carousels', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('service_id')->index();
-            $table->string('name', '20');
-            $table->string('thumbnail');
-            $table->tinyInteger('status')->index();
-            $table->tinyInteger('sort')->default(0)->index();
+            $table->string('title')->nullable();
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateServiceItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_items');
+        Schema::dropIfExists('carousels');
     }
 }

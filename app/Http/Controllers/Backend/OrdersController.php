@@ -1,19 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\MainController;
+use App\Http\Resources\OrderResource;
+use App\Models\Order;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
-class HomeController extends Controller
+class OrdersController extends MainController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $item = QueryBuilder::for(Order::class)
+            ->with('contact')
+            ->orderByDesc('id')
+            ->paginate($this->perPage);
+        return custom_response(OrderResource::collection($item)->response()->getData());
     }
 
     /**
